@@ -4,12 +4,10 @@
 enum squareStatus {EMPTY, CIRCLE, CROSS};
 
 class boardClass {
-    int width;
-    int height;
-    bool end;
+    int width, height;
     int tmpX, tmpY;
-    int currentPlayer;
-    
+    bool end, error;
+    int currentPlayer, moveCount;
     std::vector<std::vector<squareStatus>> boardVector;
     
     public:
@@ -18,4 +16,5 @@ class boardClass {
         void startGame();
         int playerMove();
         int playerPlace();
+        void checkWinEnd();
 };
