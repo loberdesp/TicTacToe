@@ -2,5 +2,5 @@
 
 int main() {
     boardClass board;
-    board.displayBoard();
+    board.startGame();
 }

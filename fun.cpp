@@ -31,3 +31,45 @@ void boardClass::displayBoard() {
         std::cout << std::endl;
     }
 }
+
+
+void boardClass::startGame() {
+    displayBoard();
+    currentPlayer = 0;
+    while(end==false) {
+        playerMove();
+        displayBoard();
+    }
+}
+
+int boardClass::playerMove() {
+    std::cout << "Player " << currentPlayer << " turn" << std::endl;
+    std::cout << "Enter coordinates(width height E.g. 2 1): " << std::endl;
+    std::cin >> tmpY;
+    std::cin >> tmpX;
+    tmpY--;
+    tmpX--;
+    if(tmpY >= 0 && tmpY <= height && tmpX >= 0 && tmpX <= width) {
+        playerPlace();
+        return 1;
+    } else {
+        std::cout << "nie no nie mozna tak" << std::endl;
+        return 0;
+    }
+}
+
+int boardClass::playerPlace() {
+    if(boardVector[tmpY][tmpX]==0) {
+        if(currentPlayer==0) {
+            boardVector[tmpY][tmpX] = CIRCLE;
+            currentPlayer=1;
+        } else {
+            boardVector[tmpY][tmpX] = CROSS;
+            currentPlayer=0;
+        }
+        return 1;
+    } else {
+        std::cout << "nie no to juz zajete jest" << std::endl;
+        return 0;
+    }
+}
